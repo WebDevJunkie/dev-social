@@ -1,3 +1,4 @@
 {
-    "mongoURL": "mongodb+srv://dev_social:dev_social123@cluster0-txycd.mongodb.net/test?retryWrites=true&w=majority"
+    "mongoURL": "mongodb+srv://dev_social:dev_social123@cluster0-txycd.mongodb.net/test?retryWrites=true&w=majority",
+    "jwtSecret" : "mysecrettoken"
 }
