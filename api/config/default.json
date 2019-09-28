@@ -1,4 +1,6 @@
 {
     "mongoURL": "mongodb+srv://dev_social:dev_social123@cluster0-txycd.mongodb.net/test?retryWrites=true&w=majority",
-    "jwtSecret" : "mysecrettoken"
+    "jwtSecret" : "mysecrettoken",
+    "githubClientId" : "94b0480c0b87a27c9e0d",
+    "githubSecret" : "4b107ba516d8c812b0d67e519da5f0bfa9db95e5"
 }
