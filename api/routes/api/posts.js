@@ -69,8 +69,8 @@ router.get('/:id', auth, async (req, res) => {
     }
 });
 
-// @route  GET api/posts/:id
-// @desc   Get single post
+// @route  DELETE api/posts/:id
+// @desc   Delete single post
 // @access Private
 router.delete('/:id', auth, async (req, res) => {
     try {
@@ -84,6 +84,53 @@ router.delete('/:id', auth, async (req, res) => {
 
         await post.remove();
         res.json({ msg: 'Post deleted' });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server error');
+    }
+});
+
+// @route  PUT api/posts/like/:id
+// @desc   Like a post
+// @access Private
+router.put('/like/:id', auth, async (req, res) => {
+    try {
+        const post = await Post.findById(req.params.id);
+
+        if (!post)
+            return res.status(404).json({ msg: 'Post does not exist' });
+
+        // Check if the post has already been liked
+        if (post.likes.filter(l => l.user.toString() === req.user.id).length > 0)
+            return res.status(400).json({ msg: 'Post was already liked' });
+        
+        post.likes.unshift({ user: req.user.id });
+        await post.save();
+
+        res.json(post);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server error');
+    }
+});
+
+// @route  PUT api/posts/unlike/:id
+// @desc   Unlike a post
+// @access Private
+router.put('/unlike/:id', auth, async (req, res) => {
+    try {
+        const post = await Post.findById(req.params.id);
+
+        if (!post)
+            return res.status(404).json({ msg: 'Post does not exist' });
+
+        // Get remove index
+        const removeIndex = post.likes.map(l => l.user.toString()).indexOf(req.user.id);
+
+        post.likes.splice(removeIndex, 1);
+        await post.save();
+
+        res.json(post);
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server error');
