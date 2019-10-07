@@ -8,7 +8,7 @@ const Navbar = () => {
                 <Link to="/"> <i class="fas fa-code"></i> DevConnector </Link>
             </h1>
             <ul>
-                <li><a href="#">Developers</a></li>
+                <li><Link to="/">Developers</Link></li>
                 <li><Link to="/register">Register</Link></li>
                 <li><Link to="/login">Login</Link></li>
             </ul>
