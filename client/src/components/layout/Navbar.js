@@ -18,13 +18,16 @@ const Navbar = ({ auth: {isAuthenticated, loading}, logout }) => {
             <li>
                 <a href="#!" onClick={logout}>Logout</a>
             </li>
+            <li>
+                <Link to="/dashboard">Dashboard</Link>
+            </li>
         </ul>
     );
 
     return (
-        <nav class="navbar bg-dark">
+        <nav className="navbar bg-dark">
             <h1>
-                <Link to="/"> <i class="fas fa-code"></i> DevConnector </Link>
+                <Link to="/"> <i className="fas fa-code"></i> DevConnector </Link>
             </h1>
             { isAuthenticated ? authLinks : guestLinks }
         </nav>
