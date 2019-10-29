@@ -25,12 +25,12 @@ const Login = ({ login, isAuthenticated }) => {
 
     return (
         <Fragment>
-            <h1 class="large text-primary">
+            <h1 className="large text-primary">
                 Sign In
             </h1>
-            <p class="lead"><i class="fas fa-user"></i> Sign into your account</p>
-            <form onSubmit={onSubmit} class="form">
-                <div class="form-group">
+            <p className="lead"><i className="fas fa-user"></i> Sign into your account</p>
+            <form onSubmit={onSubmit} className="form">
+                <div className="form-group">
                 <input 
                     type="email" 
                     placeholder="Email Address"
@@ -38,18 +38,18 @@ const Login = ({ login, isAuthenticated }) => {
                     onChange={onChange}
                     name='email' />
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                 <input 
                     type="password" 
                     placeholder="Password" 
                     value={password}
                     onChange={onChange}
                     name='password'
-                    minlength="6" />
+                    minLength="6" />
                 </div>
-                <input type="submit" value="Login" class="btn btn-primary" />
+                <input type="submit" value="Login" className="btn btn-primary" />
             </form>
-            <p class="my-1">
+            <p className="my-1">
                 Don't have an account? <Link to="/register">Sign Up</Link>
             </p>
         </Fragment>
@@ -58,7 +58,7 @@ const Login = ({ login, isAuthenticated }) => {
 
 Login.propTypes = {
     login: PropTypes.func.isRequired,
-    isAuthenticated: PropTypes.bool.isRequired
+    isAuthenticated: PropTypes.bool
 }
 
 const mapStateToProps = state => {
