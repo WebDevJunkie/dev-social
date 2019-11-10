@@ -120,7 +120,7 @@ router.get('/user/:user_id', async (req, res) => {
         if (!profile) 
             return res.status(400).json({ msg: 'Profile not found' });
 
-        res.json(profiles);
+        res.json(profile);
     } catch (err) {
         console.error(err.message);
         if (err.kind == 'ObjectId')
@@ -276,7 +276,7 @@ router.get('/github/:username', (req, res) => {
 
             if (response.statusCode !== 200) return res.status(404).json({ msg: 'No Github profile found' });
 
-            res.json(body);
+            res.json(JSON.parse(body));
         });
     } catch (err) {
         console.error(err.message);

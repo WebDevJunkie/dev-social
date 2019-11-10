@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import { deleteExperience } from '../../actions/profile';
 
 const Experience = ({ experience, deleteExperience }) => {
+
+    console.log(experience)
     const experiences = experience.map(exp => {
         return (
             <tr key={exp._id}>
@@ -42,6 +44,12 @@ const Experience = ({ experience, deleteExperience }) => {
 
 Experience.propTypes = {
     experience: PropTypes.array.isRequired
-} 
+}
 
-export default connect(null, { deleteExperience })(Experience);
+const mapStateToProps = state => {
+    return {
+        experience: state.profile.profile.experience
+    }
+}
+
+export default connect(mapStateToProps, { deleteExperience })(Experience);
